@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="<?= $this->getLanguage(); ?>">
+    <head>
+        <meta charset="<?= $this->getCharset(); ?>">
+        <title><?= $this->getTitle(); ?></title>
+        <base href="/"/>
+        <?php $this->getStyleSheet() ?>
+        <?php $this->getJavaScript() ?>
+        <link rel="stylesheet" href="assets/css/style.css"/>
+    </head>
+    <body>
+        <ul>
+            <?php foreach($this->getMenu() as $menu): ?>
+            <li><?= $menu ?></li>
+            <?php endforeach; ?>
+        </ul>
+
+        <?php $this->getBody(); ?>
+
+        <script type="text/javascript" src="assets/js/jquery.min.js"></script>
+        <script type="text/javascript" src="assets/js/jquery.form.min.js"></script>
+        <script type="text/javascript" src="assets/js/main.js"></script>
+        <script type="text/javascript" src="assets/js/jquery-ui.js"></script>
+    </body>
+</html>

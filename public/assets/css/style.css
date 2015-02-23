@@ -1,0 +1,35 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+#galery-images {
+    position: relative;
+    border: 1px solid black;
+    overflow: hidden;
+    width: auto;
+    height: auto;
+}
+
+.coment {
+    background-color: black;
+    border-radius: 7px;
+    color: white;
+    padding: 5px;
+    width: auto;
+    min-height: 20px;
+    position: absolute;
+    cursor: move;
+    top: 0;
+    left: 0;
+    z-index: 100;
+}
+
+.coment > .img-coment {
+    width: 100%;
+    position: absolute;
+}
+
+.coment > .coment-text {
+
+}

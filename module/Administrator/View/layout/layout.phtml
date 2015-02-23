@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="<?= $this->getLanguage(); ?>">
+<head>
+    <meta charset="<?= $this->getCharset(); ?>">
+    <title><?= $this->getTitle(); ?></title>
+    <base href="/"/>
+    <?php $this->getStyleSheet() ?>
+    <?php $this->getJavaScript() ?>
+    <link rel="stylesheet" href="assets/css/style.css"/>
+</head>
+<body>
+    <div>
+        <ul>
+            <li>
+                <a href="admin">Home</a>
+                <a href="admin/menu/cadastrar">Adicionar Menu</a>
+            </li>
+        </ul>
+    </div>
+    <?php $this->getBody(); ?>
+
+<script type="text/javascript" src="assets/js/jquery.min.js"></script>
+<script type="text/javascript" src="assets/js/jquery.form.min.js"></script>
+</body>
+</html>
