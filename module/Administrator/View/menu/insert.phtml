@@ -1,8 +1,10 @@
 <form method="post" action="admin/menu/gravar">
 	<label for="">Menu Superior</label>
 	<select name="id_menu_superior">
-		<option value="">Selecione...</option>
-		<option value="">Institucional</option>
+		<option value="">Selecione...</option>	
+		<?php while ($this->getMenuSuperior()->next()) : ?>
+		<option value="<?=$this->getMenuSuperior()->getValue('id_menu'); ?>"><?=$this->getMenuSuperior()->getValue("ds_menu");?></option>
+		<?php endwhile; ?>
 	</select>
 	<label for="">Descrição</label>
 	<input type="text" name="ds_menu" class="required" />
@@ -10,11 +12,11 @@
 	<input type="text" name="ds_url" class="required" />
 	<label for="">Situação</label>
 	<select name="ds_situacao">
-		<option value="1">Ativo</option>
-		<option value="0">Inativo</option>
+		<option value="A">Ativo</option>
+		<option value="I">Inativo</option>
 	</select>
 	<div class="divisao">
-		<input type="submit" value="Gravar" />
-		<input type="reset" value="Cancelar" />
+		<input type="submit" value="Gravar" class="btn-01" />
+		<input type="reset" value="Cancelar" class="btn-02" />
 	</div>
 </form>

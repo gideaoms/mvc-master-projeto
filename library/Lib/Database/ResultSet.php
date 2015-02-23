@@ -4,7 +4,7 @@ namespace Lib\Database;
 
 class ResultSet implements ResultSetInterface {
 
-    private $index = 0;
+    private $index = -1;/*inicio em -1 para que ao passar no next o ondex valera 0 inciando a iteracao desde o primeiro indice do resultado*/
     private $length = 0;
     private $resource;
 
@@ -61,6 +61,7 @@ class ResultSet implements ResultSetInterface {
      * @return mixed|null
      */
     public function getValue($name) {
+        $this->setZero();
         return $this->getValueAt($this->index, $name);
     }
 
@@ -71,6 +72,7 @@ class ResultSet implements ResultSetInterface {
      * @return int
      */
     public function getInt($name) {
+        $this->setZero();
         return (int) $this->getValueAt($this->index, $name);
     }
 
@@ -81,6 +83,7 @@ class ResultSet implements ResultSetInterface {
      * @return float
      */
     public function getFloat($name) {
+        $this->setZero();
         return (float) $this->getValueAt($this->index, $name);
     }
 
@@ -91,6 +94,7 @@ class ResultSet implements ResultSetInterface {
      * @return bool
      */
     public function getBool($name) {
+        $this->setZero();
         return (bool) $this->getValueAt($this->index, $name);
     }
 
@@ -102,4 +106,12 @@ class ResultSet implements ResultSetInterface {
     public function asArray() {
         return $this->resource;
     }
+
+    /**
+     * para zerar index caso ele esteja na posicao inicial que é -1, nesse nao existira a posicao -1
+     */
+    private function setZero() {
+        if ($this->index < 0) $this->index = 0;
+    }
+
 }

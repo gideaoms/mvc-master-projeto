@@ -9,6 +9,6 @@ return array(
         "hostname" => "localhost",
         "username" => "root",
         "password" => "",
-        "dbname"   => "mvc"
+        "dbname"   => "mvc-master-projeto"
     )
 );
