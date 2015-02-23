@@ -2,7 +2,7 @@
 
 return array(
     "routes" => array(
-        "admin/" => "Administrator"
+        "admin" => "Administrator"
     ),
 
     "database" => array(
