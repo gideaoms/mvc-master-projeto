@@ -1,4 +1,4 @@
-$(document).ready(function(){
+$(document).ready(function(){    
     $('#enviar_arte').click(function(){
         var data = {};
         var itens = [];
@@ -37,6 +37,28 @@ $(document).ready(function(){
             }
         });
     });
+
+    /* Quando usuario clica em enviar formulario */
+    $('form').ajaxForm({
+        beforeSubmit: function () {
+            if (!validate('form')) {
+                alert('Por favor, preencha os campos em vermelho!');
+                return false;
+            }
+        },
+        url: this.action,
+        type: this.method,
+        dataType: 'json',
+        success: function (data) {
+            if(data.message !== "no-message") {
+                alert(data.message);
+            }
+            if (data.redirect === "no-redirect") {
+                return false;
+            }
+            window.location.href = data.redirect;
+        }
+    });
 });
 
 function enviarImagemForm() {
@@ -48,4 +70,17 @@ function enviarImagemForm() {
             });
         }
     }).submit();
+}
+
+function validate(form) {
+    var required = true;
+    $(form).find('.required').each(function () {
+        if (this.value === '') {
+            $(this).addClass('border-red');
+            required = false;
+        } else {
+            $(this).removeClass('border-red');
+        }
+    });
+    return required;
 }

@@ -20,6 +20,11 @@ class MenuController extends AbstractController
         return $view;
     }
 
+    public function gravarAction()
+    {
+        var_dump($_POST);
+    }
+
 }
 
 ?>

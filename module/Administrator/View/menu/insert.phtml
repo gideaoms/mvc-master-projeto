@@ -1,1 +1,20 @@
-<h2>Menu Insert</h2>
+<form method="post" action="admin/menu/gravar">
+	<label for="">Menu Superior</label>
+	<select name="id_menu_superior">
+		<option value="">Selecione...</option>
+		<option value="">Institucional</option>
+	</select>
+	<label for="">Descrição</label>
+	<input type="text" name="ds_menu" class="required" />
+	<label for="">URL</label>
+	<input type="text" name="ds_url" class="required" />
+	<label for="">Situação</label>
+	<select name="ds_situacao">
+		<option value="1">Ativo</option>
+		<option value="0">Inativo</option>
+	</select>
+	<div class="divisao">
+		<input type="submit" value="Gravar" />
+		<input type="reset" value="Cancelar" />
+	</div>
+</form>
