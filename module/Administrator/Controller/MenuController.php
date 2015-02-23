@@ -34,6 +34,7 @@ class MenuController extends AbstractController
         $menu->dsUrl          = $this->getRequest()->getPost("ds_url");        
         $menu->dtCadastro     = $date->getDateActual();
         $menu->insert();
+        $this->jsonPostSuccess();
     }
 
 }

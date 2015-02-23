@@ -19,4 +19,8 @@ abstract class AbstractController implements ControllerInterface
     {
         return $this->request;
     }
+
+    protected function jsonPostSuccess() {
+        echo json_encode(["message" => "Gravado com sucesso", "redirect" => "admin/menu/list"]);
+    }
 } 

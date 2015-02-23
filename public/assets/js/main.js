@@ -42,7 +42,7 @@ $(document).ready(function(){
     $('form').ajaxForm({
         beforeSubmit: function () {
             if (!validate('form')) {
-                alert('Por favor, preencha os campos em vermelho!');
+                swal("Atenção", "Preencha os campos em vermelho!", "error");
                 return false;
             }
         },
@@ -51,12 +51,15 @@ $(document).ready(function(){
         dataType: 'json',
         success: function (data) {
             if(data.message !== "no-message") {
-                alert(data.message);
+                swal({
+                    title: data.message,   
+                    type: "success"
+                }, function(isConfirm){
+                    if (data.redirect !== "no-redirect") {
+                        window.location.href = data.redirect;
+                    }
+                });
             }
-            if (data.redirect === "no-redirect") {
-                return false;
-            }
-            window.location.href = data.redirect;
         }
     });
 });
