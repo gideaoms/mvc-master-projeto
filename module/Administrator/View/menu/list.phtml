@@ -1,0 +1,29 @@
+<table class="table">
+	<thead>
+        <tr>
+            <td colspan="6">
+                <a class="btn color-01" href="admin/menu/cadastrar">Inserir</a>
+            </td>
+        </tr>
+        <tr>
+            <th>ID</th>
+            <th>Descrição</th>
+            <th>URL</th>
+            <th>Situação</th>
+            <th>Data de Cadastro</th>
+            <th>Menu Superior</th>
+        </tr>
+    </thead>
+    <tbody>
+        <?php while ($this->getMenuSuperior()->next()) : ?>
+            <tr id="<?=$this->getMenuSuperior()->getValue("id_menu");?>">
+                <td><?=$this->getMenuSuperior()->getValue("id_menu");?></td>
+                <td><?=$this->getMenuSuperior()->getValue("ds_menu");?></td>
+                <td><?=$this->getMenuSuperior()->getValue("ds_url");?></td>
+                <td><?=$this->getMenuSuperior()->getValue("situacao");?></td>
+                <td><?=$this->getDateBr($this->getMenuSuperior()->getValue("dt_cadastro"));?></td>
+                <td><?=$this->getMenuSuperior()->getValue("menu_superior");?></td>
+            </tr>
+        <?php endwhile; ?>
+    </tbody>
+</table>

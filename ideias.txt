@@ -1,0 +1,3 @@
+-- o admin cadastra os menus que aparecerão no site e configura se o usuario tera acesso a esse menu para poder inserir
+conteudo nele ou alterar, por ex, no menu inicio o usuario nao terá acesso, mas no menu institucional sim. tambem configura
+se o menu será um item ou uma lista, por ex, no menu noticias será uma lista e no menu sobre nós será apenas uma coisa.

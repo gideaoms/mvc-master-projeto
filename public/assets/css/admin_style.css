@@ -35,42 +35,82 @@ form > select {
 	margin-bottom: 10px;
 }
 
-.btn-01 {
+.btn {
 	width: auto;
+	padding: 5px;
+	border-radius: 5px;
+	cursor: pointer;
+	font-weight: bold;
+	display: inline-block;
+	text-decoration: none;
+}
+
+.color-01 {
 	border: 1px solid #3366ff;
 	background-color: #3366ff;
-	padding: 5px;
 	color: #fff;
-	border-radius: 5px;
-	cursor: pointer;
-	font-weight: bold;
 }
 
-.btn-02 {
-	width: auto;
+.color-02 {
 	border: 1px solid #e8483f;
 	background-color: #e8483f;
-	padding: 5px;
 	color: #fff;
-	border-radius: 5px;
-	cursor: pointer;
-	font-weight: bold;
 }
 
-form .btn-01:hover {
+.color-03 {
+	border: 1px solid #ff9933;
+	background-color: #ff9933;
+	color: #fff;
+}
+
+.color-01:hover {
 	background-color: #fff;
 	border: 1px solid #3366ff;
 	color: #3366ff;
-	font-weight: bold;
 }
 
-form .btn-02:hover {
+.color-02:hover {
 	background-color: #fff;
 	border: 1px solid #e8483f;
 	color: #e8483f;
-	font-weight: bold;
+}
+
+.color-03:hover {
+	background-color: #fff;
+	border: 1px solid #ff9933;
+	color: #ff9933;
 }
 
 .border-red {
 	border: 1px solid #e8483f;
+}
+
+.table {
+    margin: 0 auto;
+    width: 60%;
+}
+
+.table thead tr th {
+    width: 300px;
+    text-align: left;
+    background-color: #3366ff;
+    color: #FFFFFF;
+    padding: 10px;
+}
+
+.table tbody tr td {
+    padding: 5px 10px;
+}
+
+.table tbody tr:nth-child(odd) {
+    background-color: #E0E0DD;
+}
+
+.table tbody tr:nth-child(even) {
+    background-color: whitesmoke;
+}
+
+.table tbody tr:hover {
+    background-color: #99ccff;
+    cursor: pointer;
 }
