@@ -21,6 +21,14 @@ abstract class AbstractController implements ControllerInterface
     }
 
     protected function jsonPostSuccess() {
-        echo json_encode(["message" => "Gravado com sucesso", "redirect" => "admin/menu/list"]);
+        echo json_encode(["message" => "Gravado com sucesso", "redirect" => "admin/menu/listar"]);
+    }
+
+    protected function jsonUpdatSuccess() {
+        echo json_encode(["message" => "Alterado com sucesso", "redirect" => "admin/menu/listar"]);
+    }
+
+    protected function jsonDeleteSuccess() {
+        echo json_encode(["message" => "Excluído com sucesso", "redirect" => "admin/menu/listar"]);
     }
 } 

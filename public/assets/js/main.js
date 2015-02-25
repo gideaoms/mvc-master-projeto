@@ -53,12 +53,56 @@ $(document).ready(function(){
             if(data.message !== "no-message") {
                 swal({
                     title: data.message,   
-                    type: "success"
+                    type: "success",
+                    closeOnConfirm: false
                 }, function(isConfirm){
                     if (data.redirect !== "no-redirect") {
-                        window.location.href = data.redirect;
+                        updateURL(data.redirect);
                     }
                 });
+            }
+        }
+    });
+    /*quando usuario clicar em voltar no formulario */
+    $("input[type='reset']").click(function(){
+        updateURL($("input[type='reset']").parent().parent().attr('action').replace('gravar', 'listar').replace('atualizar', 'listar'));
+    });
+
+    /*JavaScript referente ao plugin contextMenu (menu da listagem)*/
+
+    var contexto = ".table > tbody > tr";
+    $.contextMenu({
+        selector: contexto,
+        trigger: 'left',
+        callback: function(key, options) {
+
+        },
+        items: {
+            "novo" : {
+                name : "Novo",
+                icon : "add",
+                callback : function(key, options){
+                    updateURL("admin/menu/cadastrar");
+                }
+            },
+            "editar" : {
+                name : "Editar",
+                icon : "edit",
+                callback : function(key, options){
+                    var id = $(this).attr('id');
+                    updateURL("admin/menu/editar/" + id);
+                },
+                disabled : function(){
+                    //alert('teste');
+                }
+            },
+            "excluir" : {
+                name : "Excluir",
+                icon : "delete",
+                callback : function(key, options){
+                    var id = $(this).attr('id');
+                    confirmQuestion(id);                    
+                }
             }
         }
     });
@@ -86,4 +130,49 @@ function validate(form) {
         }
     });
     return required;
+}
+
+function updateURL(url) {
+    window.location.href = url;
+}
+
+function confirmQuestion(id) {
+    swal({
+        title: "Atenção",
+        text: "Deseja excluir o registro?",
+        type: "warning",
+        showCancelButton: true,
+        cancelButtonText: "Não",
+        confirmButtonColor: "#009900",
+        confirmButtonText: "Sim",
+        closeOnConfirm: false 
+    }, function(isConfirm){
+        if (isConfirm) {
+            $.ajax({
+                url: "/admin/menu/excluir",
+                type: "POST",
+                dataType: 'json',
+                data: {
+                    id: id
+                },
+                success: function(data) {
+                    swal({
+                        title: data.message,
+                        type: "success",
+                        closeOnConfirm: false
+                    },function(){
+                            updateURL(data.redirect);
+                        }
+                    );
+                    
+                }
+            });
+        } else {
+            //swal("Cancelled", "Your imaginary file is safe :)", "error");
+        }
+    });
+}
+
+function showMessage(message) {
+    swal(message, "success");
 }
