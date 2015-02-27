@@ -8,19 +8,33 @@ use Lib\View\AbstractView;
 
 class ApplicationView extends AbstractView
 {
-    public $paginaArual;
+	private $arrayMenu;
 
-    public function setPaginaAtual($pagina)
+    public function setArrayMenu($array)
     {
-        $this->paginaArual = $pagina;
+    	$this->arrayMenu = $array;
     }
 
-    public function getMenu() {
-        return array(
-            "Home",
-            "Sobre",
-            "Contato"
-        );
+    public function getArrayMenu()
+    {
+    	return $this->arrayMenu;
     }
 
+    public function showMenu($submenu)
+    {    	    	
+		foreach ($submenu as $key => $value) : ?>			
+			<?php if (!is_null($value["sub_menu"])) { ?>				
+				<li class="has-sub">
+					<a href="#"><?=$value["ds_menu"]; ?></a>
+					<ul>
+					<?= $this->showMenu($value["sub_menu"]); ?>
+					</ul>
+				</li>
+			<?php } else { ?>
+				<li>
+					<a href="#"><?=$value["ds_menu"]; ?></a>					
+				</li>
+			<?php }?>
+		<?php endforeach;
+	}    	    
 }

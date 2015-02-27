@@ -9,12 +9,27 @@
         <link rel="stylesheet" href="assets/css/style.css"/>
     </head>
     <body>
-        <ul>
-            <?php foreach($this->getMenu() as $menu): ?>
-            <li><?= $menu ?></li>
+        <div id="cssmenu">
+            <ul>
+            <?php foreach ($this->getArrayMenu() as $key => $value) : ?>                
+                <?php if (!is_null($value["sub_menu"])) { ?>
+                    <li class="has-sub">
+                        <a href="#">
+                        <?= $value["ds_menu"]; ?>
+                        </a>
+                        <ul>
+                        <?= $this->showMenu($value["sub_menu"]); ?>
+                        </ul>
+                    </li>
+                <?php } else { ?>
+                    <li class="active">
+                        <a href="#"><?=$value['ds_menu'];?></a>
+                    </li>
+                <?php }
+                ?>                                
             <?php endforeach; ?>
-        </ul>
-
+            </ul>
+        </div>
         <?php $this->getBody(); ?>
 
         <script type="text/javascript" src="assets/js/jquery.min.js"></script>

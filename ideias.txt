@@ -1,3 +1,25 @@
 -- o admin cadastra os menus que aparecerão no site e configura se o usuario tera acesso a esse menu para poder inserir
 conteudo nele ou alterar, por ex, no menu inicio o usuario nao terá acesso, mas no menu institucional sim. tambem configura
 se o menu será um item ou uma lista, por ex, no menu noticias será uma lista e no menu sobre nós será apenas uma coisa.
+
+-- a ordenacao deve ser feita conforme conforme cada grupo de menu. ex: os menu superiores devem ter uma ordenacao entre eles,
+os submenus devem tem outra ordenacao entre eles referente ao grupo de de submenus que eles pertencem
+
+-- quando eu for alterar algum menu, eu tenho que tirar essa opcao dos menus superiores para ter risco de colocar o 
+proprio menu com menu superior
+
+
+
+//echo $menusSuperiores->getValue("ds_menu") . '<br>';
+            $listMenu[$menusSuperiores->getValue("id_menu")] = array(
+                'ds_menu' => $menusSuperiores->getValue("ds_menu"),
+                'ds_url'  => $menusSuperiores->getValue("ds_url")                
+            );
+            $menu->idMenuSuperior = $menusSuperiores->getValue("id_menu");
+            $subMenus = $menu->listSubMenu();
+            if ($subMenus->count() > 0) {
+                $listMenu[$menu->idMenuSuperior] += array('submenu' => array(
+                    'ds_menu'  => $subMenus->getValue("ds_menu"),
+                    'ds_url'   => $subMenus->getValue("ds_url")
+                ));
+            }
